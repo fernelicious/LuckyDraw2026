@@ -5,6 +5,9 @@
 	const display = document.getElementById('present_number');
 	const winnersEl = document.getElementById('winners');
 	const resetBtn = document.getElementById('resetBtn');
+	const exportBtn = document.getElementById('exportBtn');
+	const importBtn = document.getElementById('importBtn');
+	const importFile = document.getElementById('importFile');
 	const g1El = document.getElementById('group1');
 	const g2El = document.getElementById('group2');
 	const g3El = document.getElementById('group3');
@@ -506,6 +509,50 @@
 		}
 	});
 
+	// export all saved data to JSON file
+	exportBtn.addEventListener('click', ()=>{
+		const data = {
+			groups: JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'),
+			winners: JSON.parse(localStorage.getItem(WINNERS_STORAGE_KEY) || '[]'),
+			prize: JSON.parse(localStorage.getItem(PRIZE_STORAGE_KEY) || '112'),
+			counts: JSON.parse(localStorage.getItem(PRIZE_COUNTS_STORAGE_KEY) || '{}'),
+			exportDate: new Date().toLocaleString('th-TH')
+		};
+		const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+		const url = URL.createObjectURL(blob);
+		const a = document.createElement('a');
+		a.href = url;
+		a.download = `ทองสวย_${new Date().getTime()}.json`;
+		a.click();
+		URL.revokeObjectURL(url);
+	});
+
+	// import data from JSON file
+	importBtn.addEventListener('click', ()=>{
+		importFile.click();
+	});
+
+	importFile.addEventListener('change', (e)=>{
+		const file = e.target.files[0];
+		if(!file) return;
+		const reader = new FileReader();
+		reader.onload = (evt)=>{
+			try{
+				const data = JSON.parse(evt.target.result);
+				if(data.groups) localStorage.setItem(STORAGE_KEY, JSON.stringify(data.groups));
+				if(data.winners) localStorage.setItem(WINNERS_STORAGE_KEY, JSON.stringify(data.winners));
+				if(typeof data.prize === 'number') localStorage.setItem(PRIZE_STORAGE_KEY, JSON.stringify(data.prize));
+				if(data.counts) localStorage.setItem(PRIZE_COUNTS_STORAGE_KEY, JSON.stringify(data.counts));
+				alert('นำเข้าข้อมูลสำเร็จ กรุณารีเฟรชหน้าเว็บ');
+				// reset UI state and reload
+				location.reload();
+			}catch(err){
+				alert('ไฟล์ JSON ไม่ถูกต้อง: ' + err.message);
+			}
+		};
+		reader.readAsText(file);
+	});
+
 	// if settings are edited, reset in-memory pools so changes take effect
 	[g1El,g2El,g3El,g4El].forEach(el=>el.addEventListener('input', ()=>{
 		// update in-memory pools and prize counter when group names change,
@@ -582,3 +629,4 @@
 		drawOnePrize();
 	});
 })();
+
