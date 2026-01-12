@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>จับฉลากรถแห่ ทองสวย 2026</title>
+    <style>
+        body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial;margin:24px;background:#fff}
+        h3{margin:0 0 12px}
+        #names{width:100%;height:120px;font-size:16px;padding:8px}
+        #controls{margin-top:8px}
+        #startBtn{padding:10px 14px;font-size:16px}
+        #present_number{margin-top:20px;font-size:40px;font-weight:700;color:#b85b00}
+        .winner{color:#008000}
+    </style>
+</head>
+<body>
+    <div style="display:flex;gap:18px;align-items:flex-start;min-height:calc(100vh - 48px)">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 48px);padding-top:0">
+            <h3 style="margin:0 0 12px;text-align:center">จับฉลากรถแห่ ทองสวย 2026</h3>
+            <div id="currentPrizeLabel" style="margin-top:6px;font-size:18px;color:#b85b00;text-align:center">รางวัลที่ -</div>
+            <div style="text-align:center;margin-bottom:6px">
+                <button id="startBtn">เริ่มจับรางวัล</button>
+            </div>
+
+            <div id="settingsPanel" style="display:none;border:1px solid #ddd;padding:8px;margin-bottom:8px;width:100%;max-width:520px">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                    <small>ตั้งค่าจำนวนของขวัญและรายชื่อ</small>
+                    <button id="resetBtn" style="padding:6px 10px;font-size:12px">รีเซ็ตเกม</button>
+                </div>
+                <div id="dupWarning" style="color:#b80000;margin-top:8px;font-weight:600"></div>
+
+                <div style="margin-top:8px;padding:8px;background:#f5f5f5;border-radius:4px">
+                    <label style="display:block;font-weight:600">จำนวนรางวัล</label>
+                    <input id="totalPrizes" type="number" min="1" value="112" style="width:100%;padding:6px;margin-top:6px;box-sizing:border-box">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px">
+                        <div>
+                            <label style="font-size:12px">กลุ่ม 1</label>
+                            <input id="g1Prizes" type="number" min="0" value="23" style="width:100%;padding:6px;box-sizing:border-box">
+                        </div>
+                        <div>
+                            <label style="font-size:12px">กลุ่ม 2</label>
+                            <input id="g2Prizes" type="number" min="0" value="30" style="width:100%;padding:6px;box-sizing:border-box">
+                        </div>
+                        <div>
+                            <label style="font-size:12px">กลุ่ม 3</label>
+                            <input id="g3Prizes" type="number" min="0" value="40" style="width:100%;padding:6px;box-sizing:border-box">
+                        </div>
+                        <div>
+                            <label style="font-size:12px">กลุ่ม 4</label>
+                            <input id="g4Prizes" type="number" min="0" value="19" style="width:100%;padding:6px;box-sizing:border-box">
+                        </div>
+                    </div>
+                    <div id="groupPrizesSum" style="margin-top:8px;font-size:13px;color:#333">รวมในกลุ่ม: 0</div>
+                    <div id="prizeCountWarning" style="display:none;color:#d32f2f;margin-top:8px;font-size:13px"></div>
+                </div>
+
+                <div style="margin-top:10px;border-top:1px solid #eee;padding-top:10px">
+                    <small style="font-weight:600">รายชื่อแต่ละกลุ่ม (บรรทัดละชื่อ)</small>
+                </div>
+                <div style="margin-top:6px">
+                    <label>กลุ่ม 1 <small id="g1Count" style="color:#666">(0 คน)</small></label>
+                    <textarea id="group1" placeholder="ตัวอย่าง:\nสมชาย\nสมหญิง" style="width:100%;height:80px"></textarea>
+                </div>
+                <div style="margin-top:6px">
+                    <label>กลุ่ม 2 <small id="g2Count" style="color:#666">(0 คน)</small></label>
+                    <textarea id="group2" style="width:100%;height:80px"></textarea>
+                </div>
+                <div style="margin-top:6px">
+                    <label>กลุ่ม 3 <small id="g3Count" style="color:#666">(0 คน)</small></label>
+                    <textarea id="group3" style="width:100%;height:80px"></textarea>
+                </div>
+                <div style="margin-top:6px">
+                    <label>กลุ่ม 4 <small id="g4Count" style="color:#666">(0 คน)</small></label>
+                    <textarea id="group4" style="width:100%;height:80px"></textarea>
+                </div>
+            </div>
+            <div id="present_number" style="margin-top:20px;font-size:40px;font-weight:700;color:#b85b00;text-align:center">-</div>
+        </div>
+
+        <aside style="width:320px;border-left:1px solid #eee;padding-left:12px">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+                <h4 style="margin:0">รายชื่อผู้ได้รับรางวัล</h4>
+                <button id="settingsBtn"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#999999"><path d="M624-384q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35ZM384-144v-63q0-28 14.5-51t38.5-35q43-21 90-32t97-11q50 0 97 11t90 32q24 12 38.5 35t14.5 51v63H384Zm73-72h334q-30-23-72-35.5T624-264q-53 0-95 12.5T457-216Zm167-240q20.4 0 34.2-13.8Q672-483.6 672-504q0-20.4-13.8-34.2Q644.4-552 624-552q-20.4 0-34.2 13.8Q576-524.4 576-504q0 20.4 13.8 34.2Q603.6-456 624-456Zm0-48Zm0 288ZM144-396v-72h288v72H144Zm0-300v-72h432v72H144Zm293 150H144v-72h326q-12 16-20.11 33.78Q441.77-566.44 437-546Z"/></svg></button>
+            </div>
+            <div id="winners" style="max-height:560px;overflow:auto;font-size:14px"></div>
+        </aside>
+    </div>
+
+    <script src="app..js"></script>
+</body>
+</html>
+
+<!-- Password modal (hidden) -->
+<div id="pwdModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);align-items:center;justify-content:center;z-index:9999">
+    <div style="background:#fff;padding:18px;border-radius:8px;min-width:320px;max-width:90%;box-shadow:0 6px 20px rgba(0,0,0,0.2);margin:auto;">
+        <h4 style="margin:0 0 8px">เข้าสู่การตั้งค่า</h4>
+        <input id="pwdInput" type="password" style="width:100%;padding:8px;font-size:16px;margin-bottom:10px" />
+        <div style="text-align:right">
+            <button id="pwdOk" style="padding:8px 12px">ตกลง</button>
+        </div>
+    </div>
+</div>
+ 
