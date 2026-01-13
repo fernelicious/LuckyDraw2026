@@ -20,7 +20,12 @@
             <h3 style="margin:0 0 12px;text-align:center">จับฉลากรถแห่ ทองสวย 2026</h3>
             <div id="currentPrizeLabel" style="margin-top:6px;font-size:18px;color:#b85b00;text-align:center">รางวัลที่ -</div>
             <div style="text-align:center;margin-bottom:6px">
-                <button id="startBtn">เริ่มจับรางวัล</button>
+                            <div id="present_number" style="margin-top:20px;font-size:40px;font-weight:700;color:#b85b00;text-align:center">-</div>
+                <p>
+
+                    
+                </p>
+                            <button id="startBtn">เริ่มจับรางวัล</button>
             </div>
 
             <div id="settingsPanel" style="display:none;border:1px solid #ddd;padding:8px;margin-bottom:8px;width:100%;max-width:520px">
@@ -36,57 +41,145 @@
                 <div id="dupWarning" style="color:#b80000;margin-top:8px;font-weight:600"></div>
 
                 <div style="margin-top:8px;padding:8px;background:#f5f5f5;border-radius:4px">
-                    <label style="display:block;font-weight:600">จำนวนรางวัล</label>
-                    <input id="totalPrizes" type="number" min="1" value="112" style="width:100%;padding:6px;margin-top:6px;box-sizing:border-box">
+                    <label style="display:block;font-weight:600">จำนวนของขวัญ และ กลุ่มรายชื่อที่จับ</label>
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px">
                         <div>
-                            <label style="font-size:12px">กลุ่ม 1</label>
-                            <input id="g1Prizes" type="number" min="0" value="23" style="width:100%;padding:6px;box-sizing:border-box">
+                            <label style="font-size:12px">กลุ่ม1</label>
+                            <input id="g1Prizes" type="number" min="0" value="0" style="width:100%;padding:6px;box-sizing:border-box">
+                            <select id="g1Pool" style="width:100%;padding:4px;margin-top:2px;font-size:11px">
+                                <option value="1">กลุ่ม d</option>
+                                <option value="2">กลุ่ม c</option>
+                                <option value="3">กลุ่ม b</option>
+                                <option value="4">กลุ่ม a</option>
+                            </select>
                         </div>
                         <div>
-                            <label style="font-size:12px">กลุ่ม 2</label>
-                            <input id="g2Prizes" type="number" min="0" value="30" style="width:100%;padding:6px;box-sizing:border-box">
+                            <label style="font-size:12px">กลุ่ม2</label>
+                            <input id="g2Prizes" type="number" min="0" value="0" style="width:100%;padding:6px;box-sizing:border-box">
+                            <select id="g2Pool" style="width:100%;padding:4px;margin-top:2px;font-size:11px">
+                                <option value="1">กลุ่ม d</option>
+                                <option value="2">กลุ่ม c</option>
+                                <option value="3">กลุ่ม b</option>
+                                <option value="4">กลุ่ม a</option>
+                            </select>
                         </div>
                         <div>
-                            <label style="font-size:12px">กลุ่ม 3</label>
-                            <input id="g3Prizes" type="number" min="0" value="40" style="width:100%;padding:6px;box-sizing:border-box">
+                            <label style="font-size:12px">กลุ่ม3</label>
+                            <input id="g3Prizes" type="number" min="0" value="0" style="width:100%;padding:6px;box-sizing:border-box">
+                            <select id="g3Pool" style="width:100%;padding:4px;margin-top:2px;font-size:11px">
+                                <option value="1">กลุ่ม d</option>
+                                <option value="2">กลุ่ม c</option>
+                                <option value="3">กลุ่ม b</option>
+                                <option value="4">กลุ่ม a</option>
+                            </select>
                         </div>
                         <div>
-                            <label style="font-size:12px">กลุ่ม 4</label>
-                            <input id="g4Prizes" type="number" min="0" value="19" style="width:100%;padding:6px;box-sizing:border-box">
+                            <label style="font-size:12px">กลุ่ม4</label>
+                            <input id="g4Prizes" type="number" min="0" value="0" style="width:100%;padding:6px;box-sizing:border-box">
+                            <select id="g4Pool" style="width:100%;padding:4px;margin-top:2px;font-size:11px">
+                                <option value="1">กลุ่ม d</option>
+                                <option value="2">กลุ่ม c</option>
+                                <option value="3">กลุ่ม b</option>
+                                <option value="4">กลุ่ม a</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="font-size:12px">กลุ่ม5</label>
+                            <input id="g5Prizes" type="number" min="0" value="0" style="width:100%;padding:6px;box-sizing:border-box">
+                            <select id="g5Pool" style="width:100%;padding:4px;margin-top:2px;font-size:11px">
+                                <option value="1">กลุ่ม d</option>
+                                <option value="2">กลุ่ม c</option>
+                                <option value="3">กลุ่ม b</option>
+                                <option value="4">กลุ่ม a</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="font-size:12px">กลุ่ม6</label>
+                            <input id="g6Prizes" type="number" min="0" value="0" style="width:100%;padding:6px;box-sizing:border-box">
+                            <select id="g6Pool" style="width:100%;padding:4px;margin-top:2px;font-size:11px">
+                                <option value="1">กลุ่ม d</option>
+                                <option value="2">กลุ่ม c</option>
+                                <option value="3">กลุ่ม b</option>
+                                <option value="4">กลุ่ม a</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="font-size:12px">กลุ่ม7</label>
+                            <input id="g7Prizes" type="number" min="0" value="0" style="width:100%;padding:6px;box-sizing:border-box">
+                            <select id="g7Pool" style="width:100%;padding:4px;margin-top:2px;font-size:11px">
+                                <option value="1">กลุ่ม d</option>
+                                <option value="2">กลุ่ม c</option>
+                                <option value="3">กลุ่ม b</option>
+                                <option value="4">กลุ่ม a</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="font-size:12px">กลุ่ม8</label>
+                            <input id="g8Prizes" type="number" min="0" value="0" style="width:100%;padding:6px;box-sizing:border-box">
+                            <select id="g8Pool" style="width:100%;padding:4px;margin-top:2px;font-size:11px">
+                                <option value="1">กลุ่ม d</option>
+                                <option value="2">กลุ่ม c</option>
+                                <option value="3">กลุ่ม b</option>
+                                <option value="4">กลุ่ม a</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="font-size:12px">กลุ่ม9</label>
+                            <input id="g9Prizes" type="number" min="0" value="0" style="width:100%;padding:6px;box-sizing:border-box">
+                            <select id="g9Pool" style="width:100%;padding:4px;margin-top:2px;font-size:11px">
+                                <option value="1">กลุ่ม d</option>
+                                <option value="2">กลุ่ม c</option>
+                                <option value="3">กลุ่ม b</option>
+                                <option value="4">กลุ่ม a</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="font-size:12px">กลุ่ม10</label>
+                            <input id="g10Prizes" type="number" min="0" value="0" style="width:100%;padding:6px;box-sizing:border-box">
+                            <select id="g10Pool" style="width:100%;padding:4px;margin-top:2px;font-size:11px">
+                                <option value="1">กลุ่ม d</option>
+                                <option value="2">กลุ่ม c</option>
+                                <option value="3">กลุ่ม b</option>
+                                <option value="4">กลุ่ม a</option>
+                            </select>
                         </div>
                     </div>
-                    <div id="groupPrizesSum" style="margin-top:8px;font-size:13px;color:#333">รวมในกลุ่ม: 0</div>
+                    <div id="groupPrizesSum" style="margin-top:8px;font-size:13px;color:#333">รวมของขวัญ: 0</div>
                     <div id="prizeCountWarning" style="display:none;color:#d32f2f;margin-top:8px;font-size:13px"></div>
                 </div>
 
                 <div style="margin-top:10px;border-top:1px solid #eee;padding-top:10px">
-                    <small style="font-weight:600">รายชื่อแต่ละกลุ่ม (บรรทัดละชื่อ)</small>
+                    <small style="font-weight:600">รายชื่อแต่ละกลุ่ม (บรรทัดละชื่อ) <span id="totalCount" style="color:#666">(0 คน / ต้องการ 0)</span></small>
                 </div>
                 <div style="margin-top:6px">
-                    <label>กลุ่ม 1 <small id="g1Count" style="color:#666">(0 คน)</small></label>
+                    <label>กลุ่ม d <small id="gd1Count" style="color:#666">(0 คน / ต้องการ 0)</small></label>
                     <textarea id="group1" placeholder="ตัวอย่าง:\nสมชาย\nสมหญิง" style="width:100%;height:80px"></textarea>
                 </div>
                 <div style="margin-top:6px">
-                    <label>กลุ่ม 2 <small id="g2Count" style="color:#666">(0 คน)</small></label>
+                    <label>กลุ่ม c <small id="gc2Count" style="color:#666">(0 คน / ต้องการ 0)</small></label>
                     <textarea id="group2" style="width:100%;height:80px"></textarea>
                 </div>
                 <div style="margin-top:6px">
-                    <label>กลุ่ม 3 <small id="g3Count" style="color:#666">(0 คน)</small></label>
+                    <label>กลุ่ม b <small id="gb3Count" style="color:#666">(0 คน / ต้องการ 0)</small></label>
                     <textarea id="group3" style="width:100%;height:80px"></textarea>
                 </div>
                 <div style="margin-top:6px">
-                    <label>กลุ่ม 4 <small id="g4Count" style="color:#666">(0 คน)</small></label>
+                    <label>กลุ่ม a <small id="ga4Count" style="color:#666">(0 คน / ต้องการ 0)</small></label>
                     <textarea id="group4" style="width:100%;height:80px"></textarea>
                 </div>
             </div>
-            <div id="present_number" style="margin-top:20px;font-size:40px;font-weight:700;color:#b85b00;text-align:center">-</div>
+
         </div>
 
         <aside style="width:320px;border-left:1px solid #eee;padding-left:12px">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
                 <h4 style="margin:0">รายชื่อผู้ได้รับรางวัล</h4>
-                <button id="settingsBtn"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#999999"><path d="M624-384q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35ZM384-144v-63q0-28 14.5-51t38.5-35q43-21 90-32t97-11q50 0 97 11t90 32q24 12 38.5 35t14.5 51v63H384Zm73-72h334q-30-23-72-35.5T624-264q-53 0-95 12.5T457-216Zm167-240q20.4 0 34.2-13.8Q672-483.6 672-504q0-20.4-13.8-34.2Q644.4-552 624-552q-20.4 0-34.2 13.8Q576-524.4 576-504q0 20.4 13.8 34.2Q603.6-456 624-456Zm0-48Zm0 288ZM144-396v-72h288v72H144Zm0-300v-72h432v72H144Zm293 150H144v-72h326q-12 16-20.11 33.78Q441.77-566.44 437-546Z"/></svg></button>
+                <div style="display:flex;gap:6px">
+                    <button id="exportWinnersBtn" title="ส่งออกผู้ชนะ" style="padding:6px;background:none;border:1px solid #ddd;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#666666"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg></button>
+                    <button id="importBtnExternal" title="นำเข้าข้อมูล" style="padding:6px;background:none;border:1px solid #ddd;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#666666"><path d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg></button>
+                    <button id="resetBtnExternal" title="รีเซ็ตเกม" style="padding:6px;background:none;border:1px solid #ddd;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#d32f2f"><path d="M440-122q-121-15-200.5-105.5T160-440q0-66 26-126.5T260-672l57 57q-38 34-57.5 79T240-440q0 88 56 155.5T440-202v80Zm80 0v-80q87-16 143.5-83T720-440q0-100-70-170t-170-70h-3l44 44-56 56-140-140 140-140 56 56-44 44h3q134 0 227 93t93 227q0 121-79.5 211.5T520-122Z"/></svg></button>
+                    <button id="settingsBtn" title="ตั้งค่า"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#999999"><path d="M624-384q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35ZM384-144v-63q0-28 14.5-51t38.5-35q43-21 90-32t97-11q50 0 97 11t90 32q24 12 38.5 35t14.5 51v63H384Zm73-72h334q-30-23-72-35.5T624-264q-53 0-95 12.5T457-216Zm167-240q20.4 0 34.2-13.8Q672-483.6 672-504q0-20.4-13.8-34.2Q644.4-552 624-552q-20.4 0-34.2 13.8Q576-524.4 576-504q0 20.4 13.8 34.2Q603.6-456 624-456Zm0-48Zm0 288ZM144-396v-72h288v72H144Zm0-300v-72h432v72H144Zm293 150H144v-72h326q-12 16-20.11 33.78Q441.77-566.44 437-546Z"/></svg></button>
+                </div>
             </div>
             <div id="winners" style="max-height:560px;overflow:auto;font-size:14px"></div>
         </aside>
