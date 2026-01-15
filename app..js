@@ -292,6 +292,14 @@
 		startBtn.disabled = false;
 		settingsBtn.disabled = false;
 		if(currentPrize < 1) startBtn.disabled = true;
+		
+		// Alert when 10 prizes remain (after drawing prize #11)
+		if(currentPrize === 10){
+			setTimeout(() => {
+				alert('เหลืออีก 10 รางวัลสุดท้าย');
+			}, 500);
+		}
+		
 		savePrizeToStorage();
 	}
 
@@ -841,4 +849,34 @@
 		updateCurrentPrizeLabel();
 		drawOnePrize();
 	});
+
+// View remaining names with alert
+	const viewRemainingBtn = document.getElementById('viewRemainingBtn');
+
+	if(viewRemainingBtn){
+		viewRemainingBtn.addEventListener('click', () => {
+			// Get current groups
+			const groups = getGroups();
+			
+			// Collect all remaining names from all groups
+			let allRemaining = [];
+			for(const g of [1, 2, 3, 4]){
+				if(groups[g]){
+					const filtered = groups[g].filter(name => !usedNames.has(name.toLowerCase().trim()));
+					allRemaining = allRemaining.concat(filtered);
+				}
+			}
+
+			if(allRemaining.length === 0){
+				alert('ไม่มีรายชื่อที่เหลือ (จับครบทุกคนแล้ว)');
+			} else {
+				let text = 'รายชื่อที่ยังไม่ถูกสุ่ม\n';
+				text += `รวมทั้งหมด ${allRemaining.length} คน\n\n`;
+				allRemaining.forEach((name) => {
+					text += `${name}\n`;
+				});
+				alert(text);
+			}
+		});
+	}
 })();
